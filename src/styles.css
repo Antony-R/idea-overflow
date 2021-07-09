@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Heavitas;
+    src: url(./assets/Heavitas.ttf);
+}
+
+@font-face {
+    font-family: Celine;
+    src: url(./assets/CelinePeachSans.ttf);
+}
+
+@font-face {
+    font-family: Bolt;
+    src: url(./assets/BOLTZZ.ttf);
+}

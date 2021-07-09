@@ -1,0 +1,40 @@
+<div class="container my-4">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-6">
+            <form (ngSubmit)="onSubmit()" ngNativeValidate>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" placeholder="Your Awesome idea's cool title!" [(ngModel)]="idea.title"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea name="content" class="form-control" placeholder="Your Awesome Idea :)"
+                        [(ngModel)]="idea.content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="emailId">Email Id</label>
+                    <input type="text" name="emailId" class="form-control" placeholder="example@gmail.com"
+                        [(ngModel)]="idea.emailId" required>
+                </div>
+                <div class="form-group">
+                    <label for="upiId">Upi Id</label>
+                    <input type="text" name="upiId" class="form-control" placeholder="1234@upi" [(ngModel)]="idea.upiId"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-select" name="category" [(ngModel)]="idea.category">
+                        <option value="story">Story</option>
+                        <option value="project">Project</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="alert alert-secondary mt-3 p-2">Please <strong>don't spam.</strong> You cannot edit or delete it once posted ! </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center mt-2 custom-font">
+    <input type="radio" class="btn-check" name="options" id="all">
+    <label class="btn btn-outline-primary mx-2 my-2" for="all" (click)="getAllIdeas()">ALL IDEAS</label>
+    <input type="radio" class="btn-check" name="options" id="story">
+    <label class="btn btn-outline-primary mx-2 my-2" for="story" (click)="getStoryIdeas()">STORY IDEAS</label>
+    <input type="radio" class="btn-check" name="options" id="project">
+    <label class="btn btn-outline-primary mx-2 my-2" for="project" (click)="getProjectIdeas()">PROJECT IDEAS</label>
+    <input type="radio" class="btn-check" name="options" id="general">
+    <label class="btn btn-outline-primary mx-2 my-2" for="general" (click)="getGeneralIdeas()">GENERAL IDEAS</label>
+</div>
+<div class="container h-100 d-flex justify-content-center">
+    <div class="col-md-6">
+        <div *ngIf="ideas!.length > 0;else noIdeas">
+            <ul *ngFor="let idea of ideas" class="list-group my-4">
+                <li class="list-group-item bg-dark text-white text-uppercase"><strong>{{ idea.title }}</strong></li>
+                <div *ngIf="!(viewDetails && currentIdea?.id == idea.id)">
+                    <li class="list-group-item">{{ idea.content }}</li>
+                    <li class="list-group-item"><b>Id:</b> {{ idea.id }}</li>
+                    <li class="list-group-item"><b>Posted Date:</b> {{ (idea!.postedDate!.seconds*1000) |
+                        date:'dd/MM/yyyy':'UTC'}}</li>
+                </div>
+                <div *ngIf="viewDetails && currentIdea?.id == idea.id">
+                    <li class="list-group-item"><b>Email Id: </b><a href="mailto: idea.emailId">{{ idea.emailId }}</a>
+                    </li>
+                    <li class="list-group-item"><b>UPI Id:</b> {{ idea.upiId }}</li>
+                </div>
+                <li class="list-group-item">
+                    <button (click)="toggle($event, idea)" class="btn btn-outline-secondary btn-block w-100">
+                        <div *ngIf="!(viewDetails && currentIdea?.id == idea.id)">
+                            <i class="fas fa-donate"></i> Like this idea?
+                            Consider to donate <i class="far fa-smile"></i>
+                        </div>
+                        <div *ngIf="viewDetails && currentIdea?.id == idea.id">
+                            Go Back <i class="far fa-hand-point-left"></i>
+                        </div>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <ng-template #noIdeas>
+            <hr>
+            <h5 class="p-3 mb-2 alert alert-danger">{{ message }}</h5>
+        </ng-template>
+    </div>
+</div>

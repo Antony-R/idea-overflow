@@ -1,0 +1,22 @@
+<div class="container my-4">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-6">
+            <form (ngSubmit)="onSubmit()" ngNativeValidate>
+                <div class="form-group">
+                    <div class="alert alert-warning mt-3 p-2">We will look into your reason and will delete it if it is <strong>spam</strong> or has <strong>offensive content !</strong> </div>
+                </div>
+                <div class="form-group">
+                    <label for="title">Id</label>
+                    <input type="text" name="title" class="form-control" placeholder="Enter the id of the idea you want to be deleted" [(ngModel)]="deleteRequest.id"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Reason</label>
+                    <textarea name="content" class="form-control" placeholder="Try to provide a valid reason"
+                        [(ngModel)]="deleteRequest.reason" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary my-3">Submit Request</button>
+            </form>
+        </div>
+    </div>
+</div>
